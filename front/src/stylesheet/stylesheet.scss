@@ -1,0 +1,19 @@
+@import "./colors.scss";
+@import "antd/dist/antd.css";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  padding: 0 50px;
+  min-height: 100vh;
+  background-color: $greyLight;
+
+  .ant-row {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+}
