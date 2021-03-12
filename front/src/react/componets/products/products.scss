@@ -1,0 +1,53 @@
+@import "../../../stylesheet/colors.scss";
+
+.item {
+  background-color: $white;
+  padding: 0 !important;
+  height: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $black;
+  border-bottom: 1px solid $greyLight;
+  border-radius: 4px;
+
+  .link {
+    width: 100%;
+  }
+
+  img {
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+    margin: 0 16px;
+  }
+  .price {
+    width: 50%;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h3 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  p {
+    margin: 0;
+    font-size: 18px;
+  }
+  .address {
+    margin-left: 8%;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .border-botton {
+    border: 1px solid $greyLight;
+    width: 95%;
+    margin: 0 auto;
+  }
+}
