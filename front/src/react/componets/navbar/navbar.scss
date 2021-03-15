@@ -6,6 +6,30 @@
   height: 50px;
   background-color: $yellow;
   justify-content: center;
+  min-width: 1300px;
+
+  .col-search{
+    max-width: 1000px;
+  }
+
+  button {
+    height: 30px !important;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    border-color: $greyLight !important;
+    background-color: $greyLight !important;
+    padding: 5px !important;
+
+    span {
+      color: black !important;
+    }
+
+    svg {
+      height: 18px;
+      width: 18px;
+    }
+  }
 }
 
 header {
@@ -31,23 +55,4 @@ input {
   background-color: $white !important;
   border-radius: 5px 0 0 5px;
   font-size: 18px;
-}
-
-button {
-  height: 30px !important;
-  width: 40px;
-  border-radius: 0 5px 5px 0;
-  border: none;
-  border-color: $greyLight !important;
-  background-color: $greyLight !important;
-  padding: 5px !important;
-
-  span {
-    color: black !important;
-  }
-
-  svg {
-    height: 18px;
-    width: 18px;
-  }
 }

@@ -1,6 +1,7 @@
 const express = require("express");
 const axios =require ('axios');
 const router = express.Router();
+const Item = require('../utils/itemsContructor')
 
 router.get("/", async (req,res,next)=>{
     try {
@@ -14,25 +15,15 @@ router.get("/", async (req,res,next)=>{
         });
         for (let i = 0; i < 4; i++) {
             const element = products.results[i];
-            items.push({
-                id:element.id,
-                title:element.title,
-                price:{
-                    currency:element.currency_id,
-                    amount:element.price,
-                    decimals:element.price.toFixed(2) - Math.floor(element.price)
-                },
-                picture:element.thumbnail,
-                condition:element.condition,
-                free_shipping:element.shipping.free_shipping
-            })      
+            const item = new Item(element)
+            items.push(item)
         }
         const productsToSend={
             autor:{
                 name:req.query.name || null,
                 lastName:req.query.lastName || null
             },
-            categorias:categories,
+            categories:categories,
             items:items
         }
         res.send(productsToSend)
@@ -47,28 +38,18 @@ router.get("/:id", async (req,res,next)=>{
    try {
         const id = req.params.id
         const getProduct= await axios.get(`https://api.mercadolibre.com/items/${id}`)
-        const getDesription = await axios.get(`https://api.mercadolibre.com/items/${id}/description`)
+        const getDescription = await axios.get(`https://api.mercadolibre.com/items/${id}/description`)
         const product= getProduct.data
-        const desription= getDesription.data
-        const item ={
-            id: product.id,
-            title: product.title,
-            price: {
-                currency: product.currency_id,
-                amount: product.price,
-                decimals: product.price.toFixed(2) - Math.floor(product.price)
-            },
-            picture: product.thumbnail,
-            condition: product.condition,
-            free_shipping: product.shipping.free_shipping,
-            sold_quantity: product.sold_quantity,
-            desription: desription.plain_text
-        }
+        const description= getDescription.data
+        const getCategories = await axios.get(`https://api.mercadolibre.com/categories/${product.category_id}`)
+        const categories = getCategories.data.path_from_root.map(category => category.name)
+        const item = new Item(product,description)
         const itemToSend={
             autor:{
-                name:req.body.name || null,
-                lastName:req.body.lastName || null
+                name:req.query.name || null,
+                lastName:req.query.lastName || null
             },
+            categories:categories,
             item:item
         }
         res.send(itemToSend)
