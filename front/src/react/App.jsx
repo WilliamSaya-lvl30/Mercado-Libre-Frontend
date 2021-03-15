@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import "../stylesheet/stylesheet.scss";
-import { Layout, Breadcrumb, Row, Col } from 'antd';
+import { Layout, Row } from 'antd';
 import NavbarContainer from '../react/containers/NavbarContainer';
-import ProductsContainer from '../react/containers/ProductsContainer'
+import ProductsContainer from '../react/containers/ProductsContainer';
+import SingleProducContainer from '../react/containers/SingleProductContainer'
 
 export default function () {
   const { Content } = Layout;
@@ -14,30 +15,14 @@ export default function () {
         <NavbarContainer/>
       <Content className='contenedor'>
         <Row gutter={[16]}>
-          <Col span={20}>
-            <Breadcrumb>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-          </Col> 
-        </Row>
-        <Row gutter={[16]}>
           <Switch>
-            <Route path="/items/:id" component={()=><h1>single product</h1>}/>
+            <Route path="/items/:id" component={SingleProducContainer}/>
             <Route path="/items" component={ProductsContainer}/>
+            <Redirect from="/" to="/" />
           </Switch>
         </Row>
       </Content>
     </Layout>
-
-      {/* <NavbarContainer/>
-      <div className='contenedor'>
-        <Switch>
-          <Route path="/items/:id" component={()=><h1>single product</h1>}/>
-          <Route path="/items" component={()=><h1>all products</h1>}/>
-        </Switch>
-      </div> */}
     </>  
   );
 }

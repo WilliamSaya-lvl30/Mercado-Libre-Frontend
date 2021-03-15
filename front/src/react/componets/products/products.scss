@@ -9,37 +9,70 @@
   color: $black;
   border-bottom: 1px solid $greyLight;
   border-radius: 4px;
+  margin-bottom: 110px;
+  max-width: 1000px;
 
   .link {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .row-info {
+    display: flex;
+  }
+
+  .img {
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+    margin: 0 16px;
   }
 
   img {
     width: 180px;
     height: 180px;
     border-radius: 4px;
-    margin: 0 16px;
+    // margin: 0 16px;
   }
-  .price {
-    width: 50%;
-    margin-left: 16px;
+  .item-info {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
+    .price {
+      height: 24px;
+      margin-bottom: 32px;
+      margin-top: 16px;
+      display: flex;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 24px;
+      display: inline;
+    }
+
+    .decimal {
+      font-size: 14px;
+      line-height: normal;
+      color: $black;
+    }
+
+    .shipping {
+      height: 24px;
+      width: 24px;
+      margin-left: 10px;
+    }
   }
-  h3 {
-    margin: 0;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+
   p {
     margin: 0;
     font-size: 18px;
   }
   .address {
-    margin-left: 8%;
-    display: flex;
-    align-items: center;
+    margin-top: 16px;
     p {
       font-size: 12px;
     }
@@ -49,5 +82,9 @@
     border: 1px solid $greyLight;
     width: 95%;
     margin: 0 auto;
+  }
+
+  .border-botton:last-child {
+    display: none;
   }
 }
